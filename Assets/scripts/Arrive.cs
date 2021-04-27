@@ -10,9 +10,11 @@ public class Arrive : SteeringBehaviour
     public float slowingDistance = 10.0f;
 
     public GameObject targetGameObject = null;
-   // public BoxCollider mouth;
-
-    public Transform player, dog, ball;
+    // public BoxCollider mouth;
+    public bool hasball;
+    public Transform player;
+    public Transform dog; 
+    public Transform  ball;
 
     public override Vector3 Calculate()
     {
@@ -25,7 +27,7 @@ public class Arrive : SteeringBehaviour
         {
             targetPosition = targetGameObject.transform.position;
         }
-        if (Vector3.Distance(transform.position, targetGameObject.transform.position) < 10)
+        if (Vector3.Distance(transform.position, targetGameObject.transform.position) < 10 && hasball)
         {
             ball = dog.GetComponent<Seek>().targetGameObject.transform;     
             ball.SetParent(null);

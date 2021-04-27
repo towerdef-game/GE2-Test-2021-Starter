@@ -28,7 +28,7 @@ public class dog : MonoBehaviour
         _state = State.idle;
     }
 
-    public void Update()
+    private void Update()
     {
         switch (_state)
         {
@@ -61,6 +61,7 @@ public class dog : MonoBehaviour
         {
             other.transform.parent = Dog.transform;
             _state = State.comeback;
+            
         }
     }
 
@@ -92,6 +93,7 @@ public class dog : MonoBehaviour
         //  GetComponent<Seek>().targetGameObject = GameObject.FindGameObjectWithTag("Player");
         GetComponent<Seek>().enabled = false;
         GetComponent<Arrive>().enabled = true;
+        GetComponent<Arrive>().hasball = true;
         Debug.Log("home");
     }
 }
