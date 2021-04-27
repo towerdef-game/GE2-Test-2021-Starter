@@ -74,9 +74,6 @@ public class dog : MonoBehaviour
             _state = State.seek;
             source.Play();
         }
-
-
-
     }
 
 

@@ -25,7 +25,8 @@ public class Arrive : SteeringBehaviour
     {
         if (targetGameObject != null)
         {
-            targetPosition = targetGameObject.transform.position;
+            // targetPosition = targetGameObject.transform.position;
+            targetPosition = new Vector3(targetGameObject.transform.position.x, 0f, targetGameObject.transform.position.z);
         }
         if (Vector3.Distance(transform.position, targetGameObject.transform.position) < 10 && hasball)
         {
