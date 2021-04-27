@@ -13,8 +13,10 @@ public class Arrive : SteeringBehaviour
     // public BoxCollider mouth;
     public bool hasball;
     public Transform player;
-    public Transform dog; 
+    public Transform ruff; 
     public Transform  ball;
+    public character_script character;
+    public dog blah;
 
     public override Vector3 Calculate()
     {
@@ -30,14 +32,23 @@ public class Arrive : SteeringBehaviour
         }
         if (Vector3.Distance(transform.position, targetGameObject.transform.position) < 10 && hasball)
         {
-            ball = dog.GetComponent<Seek>().targetGameObject.transform;     
-            ball.SetParent(null);
-            dog.GetComponent<Seek>().enabled = false;
-            dog.GetComponent<Arrive>().enabled = false;
-            dog.GetComponent<Boid>().enabled = false;
-           // transform.LookAt(player);
-         
+            ball = ruff.GetComponent<Seek>().targetGameObject.transform;
+            ball.GetComponent<Rigidbody>().isKinematic = false;
+            Destroy(ball.gameObject);
+         //   ball.SetParent(null);
+            hasball = false;
+          //  Destroy(ball);
+            character.canthrow = true;
+            ruff.GetComponent<Seek>().enabled = false;
+            ruff.GetComponent<Arrive>().enabled = false;
+            //  dog.GetComponent<Boid>().enabled = false;
+          //  dog.GetComponent<dog>().brok = dog.State.idle;
+            ruff.GetComponent<dog>().hasball = false;
+            // transform.LookAt(player);
+            dog.brok = dog.State.idle;
         }
+
+        
        
     }
 }

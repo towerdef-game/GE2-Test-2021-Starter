@@ -10,6 +10,7 @@ public class dog : MonoBehaviour
     public bool hasball;
     public BoxCollider mouth;
     public GameObject Dog;
+    public Transform teeth;
     public AudioSource source;
   //  private bool seeking;
  
@@ -21,16 +22,16 @@ public class dog : MonoBehaviour
         comeback
     }
 
-    private State _state;
+    public static State brok;
 
-    private void Awake()
+    public void Awake()
     {
-        _state = State.idle;
+        brok = State.idle;
     }
 
-    private void Update()
+    public void Update()
     {
-        switch (_state)
+        switch (brok)
         {
           
             case State.idle:
@@ -60,7 +61,10 @@ public class dog : MonoBehaviour
         if (other.gameObject.tag == "ball" && !hasball )
         {
             other.transform.parent = Dog.transform;
-            _state = State.comeback;
+            other.transform.position = teeth.transform.position;
+            other.attachedRigidbody.isKinematic = true;
+            hasball = true;
+            brok = State.comeback;
             
         }
     }
@@ -71,7 +75,7 @@ public class dog : MonoBehaviour
         {
             Debug.Log("idle");
        
-            _state = State.seek;
+            brok = State.seek;
             source.Play();
         }
       //  transform.LookAt(player);

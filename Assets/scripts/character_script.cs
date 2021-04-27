@@ -62,7 +62,7 @@ public class character_script : MonoBehaviour
           GameObject _ball =  Instantiate(ball,hand.position,hand.rotation);
             _ball.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * force, ForceMode.Impulse);
             dog.GetComponentInChildren<Seek>().targetGameObject = _ball;
-            
+            canthrow = false;
         }
     }
      
