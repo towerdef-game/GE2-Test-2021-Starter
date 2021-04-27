@@ -36,6 +36,7 @@ public class Arrive : SteeringBehaviour
             dog.GetComponent<Arrive>().enabled = false;
             dog.GetComponent<Boid>().enabled = false;
             transform.LookAt(player);
+         
         }
        
     }
