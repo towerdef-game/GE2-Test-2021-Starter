@@ -17,7 +17,8 @@ public class character_script : MonoBehaviour
     CharacterController characterController;
     Vector3 direction = Vector3.zero;
     public GameObject ball;
-
+    public GameObject dog;
+    public bool canthrow;
     public Transform hand;
  
     [HideInInspector]
@@ -56,10 +57,11 @@ public class character_script : MonoBehaviour
             transform.rotation *= Quaternion.Euler(0, Input.GetAxis("Mouse X") * lookSpeed, 0);
 
         }
-        if (Input.GetButtonDown("space"))
+        if (Input.GetButtonDown("space")&& canthrow)
         {
           GameObject _ball =  Instantiate(ball,hand.position,hand.rotation);
-            _ball.GetComponent<Rigidbody>().AddForce(Vector3.forward * force, ForceMode.Impulse);
+            _ball.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * force, ForceMode.Impulse);
+            dog.GetComponentInChildren<Seek>().targetGameObject = _ball;
         }
     }
      
